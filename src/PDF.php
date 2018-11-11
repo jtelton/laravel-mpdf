@@ -4,6 +4,8 @@ namespace Praem90\PDF;
 
 use \Mpdf\Mpdf;
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 /**
  * mPDF handler for generating invoice
  */
