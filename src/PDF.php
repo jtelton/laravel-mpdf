@@ -2,7 +2,7 @@
 
 namespace Praem90\PDF;
 
-use mPDF;
+use \mPDF\mPDF;
 
 /**
  * mPDF handler for generating invoice
