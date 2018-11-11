@@ -16,7 +16,7 @@ class PDF
 
     public function __construct()
     {
-        $this->mPdf = new mPDF(['mode' => 'utf-8', 
+        $this->mPdf = new Mpdf(['mode' => 'utf-8', 
                                 'format' => 'A4', 
                                 'orientation' => 'P']);
         $this->mPdf->SetDisplayMode('fullpage');
