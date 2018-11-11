@@ -18,7 +18,9 @@ class PDF
 
     public function __construct()
     {
-        $this->mPdf = new mPDF('utf-8', 'A4', '0', '0', 0, 0, 0, 0, 0, 0);
+        $this->mPdf = new mPDF(['mode' => 'utf-8', 
+                                'format' => 'A4', 
+                                'orientation' => 'P']);
         $this->mPdf->SetDisplayMode('fullpage');
         $this->mPdf->list_indent_first_level = 0;
     }
@@ -29,14 +31,14 @@ class PDF
         return $this;
     }
 
-    public function stream($name = 'invoice.pdf')
+    public function stream($name = 'file.pdf')
     {
-        return $this->mPdf->Output($name, 'S');
+        return $this->mPdf->Output($name, \Mpdf\Output\Destination::STRING_RETURN);
     }
 
-    public function download($name = 'invoice.pdf')
+    public function download($name = 'file.pdf')
     {
-        return $this->mPdf->Output($name, 'D');
+        return $this->mPdf->Output($name, \Mpdf\Output\Destination::DOWNLOAD);
     }
 
     public function loadHtml($html)
