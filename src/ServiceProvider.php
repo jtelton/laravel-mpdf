@@ -4,7 +4,6 @@ namespace Praem90\PDF;
 
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 
-
 class ServiceProvider extends IlluminateServiceProvider
 {
 
