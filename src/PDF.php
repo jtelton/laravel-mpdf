@@ -18,7 +18,14 @@ class PDF
     {
         $this->mPdf = new Mpdf(['mode' => 'utf-8', 
                                 'format' => 'A4', 
-                                'orientation' => 'P']);
+                                'orientation' => 'P',
+                                'margin_left' => 0,
+                                'margin_top' => 25,
+                                'margin_right' => 0,
+                                'margin_bottom' => 25,
+                                'margin_header' => '0',
+                                'margin_footer' => '0',
+                            ]);
         $this->mPdf->SetDisplayMode('fullpage');
         $this->mPdf->list_indent_first_level = 0;
     }
@@ -43,6 +50,24 @@ class PDF
     {
         $this->mPdf->WriteHTML($html);
         return $this;
+    }
+
+    public function SetHTMLHeader($html) 
+    {
+        $this->mPdf->SetHTMLHeader($html);
+        return $this;
+    }
+
+    public function SetHTMLFooter($html) 
+    {
+        $this->mPdf->SetHTMLFooter($html);
+        return $this;
+    }
+
+    public function SetCSS($file_path) 
+    {
+        $stylesheet = file_get_contents($file_path);
+        $this->mPdf->WriteHTML($stylesheet, 1);
     }
 
     public function __call($method, $args)
